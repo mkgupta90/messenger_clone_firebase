@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: sans-serif;
+  background: #fafafa;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #2778d4, #7336e6);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar__container {
+  width: 1200px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 60px;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.navabr__logo {
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar__links {
+  flex: 1;
+  display: flex;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.navbar__links li {
+  list-style-type: none;
+}
+
+.navbar__btn {
+  text-decoration: none;
+  height: 35px;
+  background: rgb(218, 6, 165);
+  color: #fff;
+  padding: 0 10px;
+  box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.4);
+  outline: none;
+  cursor: pointer;
+}
+
+.navbar__img {
+  width: 35px;
+  height: 35px;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar__img img {
+  width: 100%;
+  height: 100;
+}
+
+/* Messages */
+.messages {
+  width: 1200px;
+  max-width: 1200px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: 100vh;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.messages__other {
+  display: flex;
+}
+
+.messages__other-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.messages__other-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.messages__other-msg {
+  width: 400px;
+  padding-left: 10px;
+}
+
+.messages__other-msg p {
+  display: inline-block;
+  background: #efefef;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 7px;
+  border-radius: 4px;
 }
