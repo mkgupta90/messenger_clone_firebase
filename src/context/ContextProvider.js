@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState} from 'react';
-import { auth } from '../config';
+import { auth, db } from '../config';
 import firebase from 'firebase';
 
 // Create Context
@@ -7,9 +7,12 @@ export const ContextProvider = createContext();
 
 // Create Context Component
 const ContextComponent = (props) => {
-    // State
+    // User State
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
+
+    // Messages State
+    const [allMsg, setAllMsg] =useState([]);
 
     // Register
     const register = () => {
@@ -26,17 +29,44 @@ const ContextComponent = (props) => {
         })
     }
 
+    // InputField data send  to firebase database 
+    const sendMessage = (msg) => {
+        //console.log("My message: ", msg);
+        db.collection("messages").add({
+            msg,
+            photo: user.photoURL,
+            username: user.displayName,
+            email: user.email,
+            currentTime: firebase.firestore.FieldValue.serverTimestamp()
+        })
+    }
+
     useEffect( () => {
         auth.onAuthStateChanged( (user) => {
             setUser(user);
             setLoader(false);
+        });
+
+        // Fetch Messages(data) from firebase Database
+        db.collection("messages").orderBy("currentTime", 'asc').onSnapshot( snap => {
+            console.log("All Messages: ",snap.docs);
+
+            // Looping of allMsg for individual document
+            setAllMsg(
+                snap.docs.map( doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+            );
         })
     }, [])
 
-    console.log(user);
+    //console.log(user);
+     console.log(allMsg);
 
     return(
-        <ContextProvider.Provider value={{ register, user, loader, logout }}>
+        <ContextProvider.Provider 
+            value={{ register, user, loader, logout, sendMessage, allMsg }}>
             {props.children}
         </ContextProvider.Provider>
     )

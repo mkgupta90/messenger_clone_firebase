@@ -77,7 +77,7 @@ body {
   left: 0;
   right: 0;
   background: #fff;
-  height: 100vh;
+  height: calc(100vh - 120px);
   margin: 60px auto;
   padding: 20px;
 }
@@ -102,6 +102,7 @@ body {
 .messages__other-msg {
   width: 400px;
   padding-left: 10px;
+  margin-top: 8px;
 }
 
 .messages__other-msg p {
@@ -111,4 +112,76 @@ body {
   font-size: 14px;
   margin-top: 7px;
   border-radius: 4px;
+}
+.messages__other-msg span {
+  display: block;
+  text-transform: capitalize;
+}
+
+/* My messages */
+.messages__my {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.messages__my-p {
+  width: 400px;
+  text-align: right;
+  margin-top: 8px;
+}
+
+.messages__my-p p {
+  display: inline-block;
+  padding: 10px;
+  font-size: 14px;
+  background: linear-gradient(to right, #1e53b6, #7336e6);
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* InputField Messages */
+.input__form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.input__control {
+  background: #fff;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #efefef;
+  outline: none;
+  padding: 0 15px;
+}
+
+
+/* Welcome */
+.welcome {
+  margin: 90px auto;
+  padding: 20px;
+  background: #fff;
+  width: 1200px;
+}
+
+.welcome h1{
+  margin-bottom: 15px;
+}
+
+
+/* Responsiveness */
+
+@media (max-width: 765px) {
+  .navbar__container {
+    width: 425px;
+    max-width: 425px;
+    padding: 0 20px;
+  }
+
+  .messages {
+    width: 90%;
+  }
 }
